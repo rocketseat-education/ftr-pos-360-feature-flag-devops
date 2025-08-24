@@ -1,0 +1,29 @@
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres_unleash
+    environment:
+      POSTGRES_USER: unleash_user
+      POSTGRES_PASSWORD: unleash
+      POSTGRES_DB: unleash
+    networks:
+      - unleash
+
+  unleash:
+    image: unleashorg/unleash-server:latest
+    container_name: unleash
+    ports:
+      - "4200:4242"
+    environment:
+      - DATABASE_HOST=postgres_unleash
+      - DATABASE_NAME=unleash
+      - DATABASE_USERNAME=unleash_user
+      - DATABASE_PASSWORD=unleash
+      - DATABASE_SSL=false
+    depends_on:
+      - postgres
+    networks:
+      - unleash
+
+networks:
+  unleash:

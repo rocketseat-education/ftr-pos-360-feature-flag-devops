@@ -9,9 +9,9 @@ const unleash = await initialize({
 });
 
 const verifyToggles = () => {
-    const enabled = unleash.isEnabled(FLAG);
+    const enabled = unleash.isEnabled(FLAG, { properties: { groupId: "rocketseat-user" } });
     if (enabled) {
-        const variant = unleash.getVariant(FLAG);
+        const variant = unleash.getVariant(FLAG );
         if (variant.enabled) {
         console.log(`${enabled} - ${variant.name} - ${variant.payload.value}`);
         } else {
