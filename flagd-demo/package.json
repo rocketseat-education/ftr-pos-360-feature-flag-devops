@@ -1,0 +1,15 @@
+{
+  "name": "flagd-demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "type": "module",
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e",
+  "dependencies": {
+    "@grpc/grpc-js": "^1.13.4",
+    "@openfeature/core": "^1.9.0",
+    "@openfeature/flagd-core": "^1.1.0",
+    "@openfeature/flagd-provider": "^0.13.3",
+    "@openfeature/server-sdk": "^1.19.0"
+  }
+}
