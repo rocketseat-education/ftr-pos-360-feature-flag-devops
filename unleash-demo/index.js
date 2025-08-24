@@ -9,7 +9,7 @@ const unleash = await initialize({
 });
 
 const verifyToggles = () => {
-    const enabled = unleash.isEnabled(FLAG);
+    const enabled = unleash.isEnabled(FLAG, { properties: { groupId: "rocketseat-user" } });
     console.log(enabled);
     setInterval(verifyToggles, 3000);
 }
