@@ -6,6 +6,7 @@ metadata:
 
 spec:
   replicas: 5
+  revisionHistoryLimit: 5
   selector:
     matchLabels:
       app: app-k8s
@@ -17,7 +18,7 @@ spec:
       spec:
         containers:
           - name: app-k8s
-            image: danielrodriguess/app-k8s:v1
+            image: danielrodriguess/app-k8s:v3
             imagePullPolicy: IfNotPresent
             ports:
               - containerPort: 3000
@@ -29,7 +30,17 @@ spec:
                 cpu: "200m"
                 memory: "256Mi"
     strategy:
-      blueGreen:
-        autoPromotionEnabled: false
-        activeService: app-k8s-svc
-        previewService: app-k8s-preview
+      # blueGreen:
+        # autoPromotionEnabled: false
+        # activeService: app-k8s-svc
+        # previewService: app-k8s-preview
+      canary:
+        steps:
+          - setWeight: 20
+          - pause: {}
+          - setWeight: 30
+          - pause: { duration: 30 }
+          - setWeight: 50
+          - pause: { duration: 60 }
+          - setWeight: 80
+          - pause: { duration: 60 }
