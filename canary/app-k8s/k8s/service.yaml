@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: app-k8s-svc
+
+spec:
+  type: ClusterIP
+  selector: 
+    app: app-k8s
+  ports:
+    - port: 80
+      targetPort: 3000

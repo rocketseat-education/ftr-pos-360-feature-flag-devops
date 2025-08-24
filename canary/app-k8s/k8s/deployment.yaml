@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+
+metadata:
+  name: app-k8s
+
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: app-k8s
+  template:
+    metadata:
+      labels:
+        app: app-k8s
+    template:
+      spec:
+        containers:
+          - name: app-k8s
+            image: danielrodriguess/app-k8s:v1
+            imagePullPolicy: IfNotPresent
+            ports:
+              - containerPort: 3000
+            resources:
+              requests:
+                cpu: "100m"
+                memory: "128Mi"
+              limits:
+                cpu: "200m"
+                memory: "256Mi"
