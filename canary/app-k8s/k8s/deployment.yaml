@@ -28,3 +28,8 @@ spec:
               limits:
                 cpu: "200m"
                 memory: "256Mi"
+    strategy:
+      blueGreen:
+        autoPromotionEnabled: false
+        activeService: app-k8s-svc
+        previewService: app-k8s-preview
