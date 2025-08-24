@@ -4,10 +4,10 @@
     "LOGIN_PAGE": {
       "state": "ENABLED",
       "variants": {
-        "A": "Logar",
-        "B": "Entrar"
+        "on": true,
+        "off": false
       },
-      "defaultVariant": "A"
+      "defaultVariant": "on"
     }
   }
 }
